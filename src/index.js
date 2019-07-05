@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import './index.html';
 
-class Hello extends React.Component {
+class App extends React.Component {
   render() {
     return (
       <>
@@ -13,4 +13,4 @@ class Hello extends React.Component {
   }
 }
 
-ReactDOM.render(<Hello />, document.querySelector('#app'));
+ReactDOM.render(<App />, document.querySelector('#app'));
