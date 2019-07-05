@@ -14,6 +14,8 @@ const Flight = (props) => {
                 DateTime.fromMillis(props.aTime * 1000).toFormat('hh:mm')
             } </strong>
 
+            <strong> {props.price} EUR </strong>
+
         </div>
     )
 }
@@ -28,6 +30,7 @@ const FlightResultsComponent = (props) => {
                 cityTo={flight.cityTo}
                 dTime={flight.dTimeUTC}
                 aTime={flight.aTimeUTC}
+                price={flight.price}
             />
         )
     })
