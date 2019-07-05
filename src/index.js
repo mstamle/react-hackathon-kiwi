@@ -9,7 +9,7 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <h1>5 Flights from Prague to Valencia tomorrow</h1>
+        <h1>Flights Search for Your Next Adventure!!</h1>
         <FlightContainer/>
       </>
     );

@@ -16,14 +16,18 @@ const Flight = (props) => {
 
             <strong> {props.price} EUR </strong>
 
+            <p> Stopovers: {props.numberOfStopOver}</p>
+
         </div>
         
     )
 }
 
 const FlightResultsComponent = (props) => {
-    const flights = props.flights.map((flight,index) =>{
-        console.log('flight', flight);
+
+
+    const flights = props.flights.slice(props.paginationPostition , props.paginationPostition + props.paginationInterval).map((flight,index) =>{
+        console.log(flight);
         return(
             <Flight
                 key={`flight-${index}`}
@@ -32,15 +36,34 @@ const FlightResultsComponent = (props) => {
                 dTime={flight.dTimeUTC}
                 aTime={flight.aTimeUTC}
                 price={flight.price}
+                numberOfStopOver = {flight.route.length}
             />
         )
     })
     return (
         <div>
             <h1>Results!!!!</h1>
-            {flights}
+            <div>
+                {flights !== [] ? props.Messages.FlightsFound : props.Messages.NoFlight}
+            </div>
+
+            <div>
+                {flights}
+            </div>
+
+            {props.directRequired ? props.Messages.Direct : props.Messages.NoDirectNeeded }
+
+
+            <div>
+                <button onClick={props.handleGoBack} disabled={props.paginationPostition <= 0 }>Back</button>
+                <button onClick={props.handleGoNext} disabled={props.paginationPostition + props.paginationInterval > flights.length }>Next</button>
+            </div>
         </div>
     )
 }
 
 export default FlightResultsComponent;
+
+
+
+//        setShownFlights(flights.slice(paginationPostition , paginationPostition + paginationInterval));

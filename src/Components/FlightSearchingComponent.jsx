@@ -1,59 +1,31 @@
 import React from 'react';
 
-const CitiesFrom = [
-    { code: "VLC",
-        name: "Valencia"},
-    { code: "BCN",
-        name: "Barcelona"},
-    { code: "MAD",
-        name: "Madrid"},
-    { code: "MXP",
-        name: "Milano"},
-    { code: "ATH",
-        name: "Athens"}
-]
-
-const CitiesTo = [
-    { code: "PRG",
-        name: "Prague"},
-    { code: "TXL",
-        name: "Berlin"},
-    { code: "MOW",
-        name: "Warsaw"},
-    { code: "PED",
-        name: "Pardubice"}
-]
-const citiesFromChange = () => {
-    console.log("CitiesFrom");
-    // this.setState({ subject: event.target.value });
-} 
-
-const citiesToChange = () => {
-    console.log("CitiesTo");
-    // this.setState({ subject: event.target.value });
-} 
-
-const FlightSearchingComponent = () => {
+const FlightSearchingComponent = ({CitiesFrom, CitiesTo, citiesFromChange, citiesToChange, handleSearchClick, handleCheckbox, directRequired }) => {
     return (
         <div>
             <div>
                 <label>From:</label>
                 <select onChange={citiesFromChange}>
                     {CitiesFrom.map(city =>
-                    <option value={city.code}>{city.name}</option>
+                        <option value={city.code}>{city.name}</option>
                     )}
                 </select>
             </div>
 
             <div>
-            <label>To:</label>
-            <select onChange={citiesToChange}>
-                {CitiesTo.map(city =>
-                <option value={city.code}>{city.name}</option>
-                )}
-            </select>
+                <label>To:</label>
+                <select onChange={citiesToChange}>
+                    {CitiesTo.map(city =>
+                        <option value={city.code}>{city.name}</option>
+                    )}
+                </select>
             </div>
-        <button type="submit">Search</button>
+            <div>
+                <input type="checkbox" id="direct" onChange={handleCheckbox} checked={directRequired}/>
+                <label htmlFor="direct">Direct Flights Only</label>
+
+            </div>
+            <button onClick={handleSearchClick} type="submit">Search</button>
         </div>
     )
 }
