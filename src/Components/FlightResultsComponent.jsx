@@ -17,6 +17,7 @@ const Flight = (props) => {
             <strong> {props.price} EUR </strong>
 
         </div>
+        
     )
 }
 
@@ -37,7 +38,6 @@ const FlightResultsComponent = (props) => {
     return (
         <div>
             <h1>Results!!!!</h1>
-
             {flights}
         </div>
     )
